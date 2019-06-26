@@ -5,7 +5,8 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
-import Notfound from './components/auth/Notfound';
+import Dashboard from './components/dashboard/Dashboard';
+import Private from './components/routing/Private';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -15,12 +16,13 @@ import setAuthToken from './utils/setAutToken';
 import './App.css';
 
 if(localStorage.token){
-  console.log('123');
   setAuthToken(localStorage.token);
+  console.log('122')
 }
 
 const App = () => {
   useEffect(() => {
+    console.log('12222222')
     store.dispatch(loadUser());
   }, []);
 
@@ -33,9 +35,9 @@ const App = () => {
         <section className="container">
           <Alert />
           <Switch>
-            <Route exact path="/register" component={ Register } />
-            <Route exact path="/login" component={ Login } />
-            <Route component={Notfound} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Private exact path="/dashboard" component={Dashboard} />
           </Switch>
           </section>
         </Fragment>
