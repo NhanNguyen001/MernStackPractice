@@ -6,6 +6,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profile-forms/CreateProfile';
 import Private from './components/routing/Private';
 // Redux
 import { Provider } from 'react-redux';
@@ -17,12 +18,10 @@ import './App.css';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
-  console.log('122')
 }
 
 const App = () => {
   useEffect(() => {
-    console.log('12222222')
     store.dispatch(loadUser());
   }, []);
 
@@ -38,6 +37,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Private exact path="/dashboard" component={Dashboard} />
+            <Private exact path="/create-profile" component={CreateProfile} />
           </Switch>
           </section>
         </Fragment>

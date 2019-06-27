@@ -8,8 +8,6 @@ const Private = ({
   auth: {isAuthenticated, loading}, 
   ...rest 
 }) => {
-  console.log(isAuthenticated);
-  console.log(loading);
   return <Route 
   {...rest} 
   render={props => 
@@ -21,8 +19,6 @@ const Private = ({
     } 
 />
 }
-
-
 
 Private.propTypes = {
   auth: PropTypes.object.isRequired
