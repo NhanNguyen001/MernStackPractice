@@ -20,7 +20,6 @@ export const loadUser = () => async dispatch => {
 
   try {
     const res = await axios.get('/api/auth');
-
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -40,6 +39,7 @@ export const register = ({ name, email, password }) => async dispatch => {
     }
   }
 
+  // Convert data to a string. The data has to be a string.
   const body = JSON.stringify({ name, email, password });
 
   try {

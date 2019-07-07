@@ -32,6 +32,7 @@ router.post(
     const { name, email, password } = req.body;
 
     try {
+      // See if user exits
       let user = await User.findOne({ email });
 
       if (user) {
@@ -40,6 +41,7 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
+      // Get users gravatar
       const avatar = gravatar.url(email, {
         s: '200',
         r: 'pg',
@@ -53,12 +55,14 @@ router.post(
         password
       });
 
+      // Encrypt password
       const salt = await bcrypt.genSalt(10);
 
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
 
+      // Return jsonwebtoken
       const payload = {
         user: {
           id: user.id
@@ -74,6 +78,7 @@ router.post(
           res.json({ token });
         }
       );
+
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');

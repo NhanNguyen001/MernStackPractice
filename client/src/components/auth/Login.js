@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
+	// Relate to state and setState in class component
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
 	});
-	// Relate to state and setState in class component
-
+	
 	const { email, password } = formData;
 
 	const onChange = e => 
@@ -70,7 +70,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-	mapStateToProps, 
-	{ login })
-(Login);
+export default connect(mapStateToProps, { login })(Login);
