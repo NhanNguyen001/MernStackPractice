@@ -20,7 +20,7 @@ import setAuthToken from './utils/setAutToken';
 
 import './App.css';
 
-if(localStorage.token){
+if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
@@ -32,25 +32,26 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-      <Fragment>
-        <Navbar />
-        <Route exact path="/" component={ Landing } />
-        <section className="container">
-          <Alert />
-          <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/profiles" component={Profiles} />
-            <Private exact path="/dashboard" component={Dashboard} />
-            <Private exact path="/create-profile" component={CreateProfile} />
-            <Private exact path="/edit-profile" component={EditProfile} />
-            <Private exact path="/add-experience" component={AddExperience} />
-            <Private exact path="/add-education" component={AddEducation} />
-          </Switch>
+        <Fragment>
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <section className="container">
+            <Alert />
+            <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
+              <Private exact path="/dashboard" component={Dashboard} />
+              <Private exact path="/create-profile" component={CreateProfile} />
+              <Private exact path="/edit-profile" component={EditProfile} />
+              <Private exact path="/add-experience" component={AddExperience} />
+              <Private exact path="/add-education" component={AddEducation} />
+            </Switch>
           </section>
         </Fragment>
       </Router>
     </Provider>
-)};
+  )
+};
 
 export default App;

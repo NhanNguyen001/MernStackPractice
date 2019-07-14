@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ProfileItem = ({ profile: {
-  users: { _id, name, avatar },
+  user: { _id, name, avatar },
   status,
   company,
   location,
@@ -21,6 +21,11 @@ const ProfileItem = ({ profile: {
         </Link>
       </div>
       <ul>
+        {skills.slice(0, 4).map((skill, index) => (
+          <li key={index} className="text-primary">
+            <i className="fas fa-check"></i> {skill}
+          </li>
+        ))}
       </ul>
     </div>
   );
